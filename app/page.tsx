@@ -12,7 +12,7 @@ import {
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center">
-      <Section className="bg-hero-image h-screen w-full bg-cover bg-fixed bg-top bg-no-repeat">
+      <Section className="bg-hero-image h-screen w-full bg-contain bg-fixed bg-top bg-no-repeat">
         <div className="absolute h-full w-full bg-gradient-to-b from-black/10 from-0% to-black/40 to-100%"></div>
 
         <Container className="flex-item h-screen justify-center gap-20 py-40 text-white lg:justify-center">

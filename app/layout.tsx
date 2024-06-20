@@ -1,4 +1,4 @@
-import { Inter } from 'next/font/google';
+import { Providers } from './providers';
 import type { Metadata } from 'next';
 import { montserrat } from '@/app/ui/fonts';
 import '@/app/ui/globals.css';
@@ -15,7 +15,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={montserrat.className}>{children}</body>
+      <body className={montserrat.className}>
+        <Providers>{children}</Providers>
+      </body>
     </html>
   );
 }

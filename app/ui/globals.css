@@ -12,3 +12,7 @@ body {
     text-wrap: balance;
   }
 }
+
+.h-timing {
+  height: 900px;
+}

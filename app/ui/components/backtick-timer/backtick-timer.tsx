@@ -46,7 +46,7 @@ export const BacktickTimer = () => {
   }, [timer]);
 
   return (
-    <div className={clsx([karlotte.className, 'flex gap-4'])}>
+    <div className={clsx([karlotte.className, 'flex gap-4 pt-5'])}>
       <div className="text-center">
         <div className="flex h-20 w-16 items-center justify-center rounded bg-gradient-to-b from-lime-950 from-30% via-lime-800 via-50% to-lime-950 to-80% align-middle text-4xl font-bold text-white">
           {timer.days ? timer.days.toString().padStart(2, '0') : '00'}

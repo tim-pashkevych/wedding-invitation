@@ -1,7 +1,7 @@
 import { useForm } from 'react-hook-form';
-import { computedTypesResolver } from '@hookform/resolvers/computed-types';
-import Schema, { number, string } from 'computed-types';
+import { yupResolver } from '@hookform/resolvers/yup';
 import TextareaAutosize from 'react-textarea-autosize';
+import { attendanceSchema } from '../../schemas/attendanceSchema';
 
 export const AttendanceForm = () => {
   interface AttendanceData {
@@ -12,20 +12,12 @@ export const AttendanceForm = () => {
     message: string;
   }
 
-  const schema = Schema({
-    name: string.min(1).error('Name field is required'),
-    email: string.min(1).error('Email field is required'),
-    adults: string,
-    children: string,
-    message: string,
-  });
-
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<AttendanceData>({
-    resolver: computedTypesResolver(schema),
+    resolver: yupResolver(attendanceSchema),
   });
 
   const onSubmit = (data: AttendanceData) => {
@@ -78,6 +70,7 @@ export const AttendanceForm = () => {
           className="w-full border-b-2 bg-transparent text-xl text-white"
         >
           <option value={0}>Children (2 - 11 years)</option>
+          <option value={0}>0</option>
           <option value={1}>1</option>
           <option value={2}>2</option>
           <option value={3}>3</option>

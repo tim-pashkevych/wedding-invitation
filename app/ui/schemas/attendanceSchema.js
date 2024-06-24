@@ -6,7 +6,7 @@ export const attendanceSchema = Yup.object({
     .required('How many adults (12+ years) attend')
     .positive('How many adults (12+ years) attend')
     .integer(),
-  children: Yup.number()
+  kids: Yup.number()
     .required('How many kids (2-11 years) going with you')
     .integer()
     .oneOf(

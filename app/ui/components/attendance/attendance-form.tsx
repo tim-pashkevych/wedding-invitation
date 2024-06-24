@@ -2,28 +2,40 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import TextareaAutosize from 'react-textarea-autosize';
 import { PaperAirplaneIcon } from '@heroicons/react/24/solid';
+import { useState } from 'react';
+
 import { attendanceSchema } from '../../schemas/attendanceSchema';
+import { IAttendanceSubmission } from '@/app/types';
+import { save } from './attendance-form-actions';
 
 export const AttendanceForm = () => {
-  interface AttendanceData {
-    name: string;
-    adults: number;
-    children: number;
-    message: string;
-  }
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<AttendanceData>({
+  } = useForm<IAttendanceSubmission>({
     resolver: yupResolver(attendanceSchema),
   });
 
-  const onSubmit = (data: AttendanceData) => {
-    console.log(data);
-    // do api stuff here
+  const onSubmit = async (data: IAttendanceSubmission) => {
+    await save(data);
+    setIsSubmitted(true);
   };
+
+  if (isSubmitted)
+    return (
+      <div
+        data-aos="flip-up"
+        data-aos-duration="2000"
+        data-aos-offset="100"
+        data-aos-delay="100"
+      >
+        <p className="text-center text-xl">Thank you for your registration. </p>
+        <p className="text-center text-xl">We are excited to see you soon.</p>
+      </div>
+    );
 
   return (
     <form
@@ -61,7 +73,7 @@ export const AttendanceForm = () => {
       </div>
       <div className="mb-10 w-full">
         <select
-          {...register('children')}
+          {...register('kids')}
           className="w-full border-b-2 bg-transparent text-xl "
         >
           <option value={-1}>Children (2 - 11 years)</option>
@@ -74,8 +86,8 @@ export const AttendanceForm = () => {
           <option value={6}>6</option>
           <option value={7}>7</option>
         </select>
-        {errors.children?.message && (
-          <p className="text-red-600">{errors.children?.message}</p>
+        {errors.kids?.message && (
+          <p className="text-red-600">{errors.kids?.message}</p>
         )}
       </div>
       <div className="mb-10 w-full">

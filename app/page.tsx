@@ -309,12 +309,7 @@ export default function Home() {
       </Section>
       <Section className="w-ful bg-lime-950 pb-10 pt-10 text-white">
         <Container className="text-center text-xl not-italic">
-          <h2
-            className="relative mb-16 flex w-auto flex-col text-center text-5xl uppercase md:text-6xl"
-            data-aos="fade-down"
-            data-aos-duration="1000"
-            data-aos-delay="100"
-          >
+          <h2 className="relative mb-16 flex w-auto flex-col text-center text-5xl uppercase md:text-6xl">
             <span className={karlotte.className}>Contacts</span>
             <span
               className={clsx([
@@ -326,22 +321,13 @@ export default function Home() {
             </span>
           </h2>
 
-          <p
-            className="mb-4"
-            data-aos="fade-up"
-            data-aos-duration="1000"
-            data-aos-delay="100"
-          >
+          <p className="mb-4">
             По всем возникшим вопросам просьба обращаться по телефону
           </p>
 
           <a
             href="tel:5032478727"
             className="flex items-end gap-2 rounded-xl bg-white/[.2] p-5"
-            data-aos="flip-up"
-            data-aos-offset="100"
-            data-aos-duration="1000"
-            data-aos-delay="300"
           >
             <PhoneIcon className="size-6"></PhoneIcon>(503)-427-8727
           </a>

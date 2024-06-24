@@ -1,6 +1,7 @@
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import TextareaAutosize from 'react-textarea-autosize';
+import { PaperAirplaneIcon } from '@heroicons/react/24/solid';
 import { attendanceSchema } from '../../schemas/attendanceSchema';
 
 export const AttendanceForm = () => {
@@ -35,7 +36,7 @@ export const AttendanceForm = () => {
           type="text"
           {...register('name')}
           placeholder="Name"
-          className="w-full border-b-2 bg-transparent text-xl text-white"
+          className="w-full border-b-2 bg-transparent text-xl"
         />
         {errors.name?.message && <p>{errors.name?.message}</p>}
       </div>
@@ -44,14 +45,14 @@ export const AttendanceForm = () => {
           type="text"
           {...register('email')}
           placeholder="Your email"
-          className="w-full border-b-2 bg-transparent text-xl text-white"
+          className="w-full border-b-2 bg-transparent text-xl "
         />
         {errors.email?.message && <p>{errors.email?.message}</p>}
       </div>
       <div className="mb-10 w-full">
         <select
           {...register('adults')}
-          className="w-full border-b-2 bg-transparent text-xl text-white"
+          className="w-full border-b-2 bg-transparent text-xl "
         >
           <option value={0}>Adults (12+ years)</option>
           <option value={1}>1</option>
@@ -67,7 +68,7 @@ export const AttendanceForm = () => {
       <div className="mb-10 w-full">
         <select
           {...register('children')}
-          className="w-full border-b-2 bg-transparent text-xl text-white"
+          className="w-full border-b-2 bg-transparent text-xl "
         >
           <option value={0}>Children (2 - 11 years)</option>
           <option value={0}>0</option>
@@ -85,14 +86,15 @@ export const AttendanceForm = () => {
         <TextareaAutosize
           {...register('message')}
           placeholder="Message"
-          className="w-full border-b-2 bg-transparent text-xl text-white"
+          className="w-full border-b-2 bg-transparent text-xl "
         ></TextareaAutosize>
         {errors.message?.message && <p>{errors.message?.message}</p>}
       </div>
       <button
         type="submit"
-        className="h-10 w-full rounded-xl bg-white font-bold text-black"
+        className="flex h-10 w-full items-center justify-center gap-2 rounded-xl bg-black/[.2] p-8 text-xl font-normal"
       >
+        <PaperAirplaneIcon className="size-6"></PaperAirplaneIcon>
         Send
       </button>
     </form>

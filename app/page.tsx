@@ -24,19 +24,18 @@ export default function Home() {
 
   return (
     <main className="flex min-h-screen flex-col items-center">
-      <Section className="h-screen w-full ">
+      <Section className="h-screen w-full">
         <ParallaxBanner
           style={{ aspectRatio: '2 / 1' }}
-          className="flex h-screen flex-col items-center"
+          className="flex h-screen flex-col items-center pb-12"
         >
           <ParallaxBannerLayer speed={-20}>
             <Image
-              src="/hero-copy.jpg"
+              src="/hero.jpg"
               alt="Konstantin and Valentina"
               fill
               style={{
-                objectFit: 'cover',
-                objectPosition: 'top',
+                objectFit: 'contain',
               }}
               quality={100}
             />
@@ -44,10 +43,9 @@ export default function Home() {
 
           <div className="absolute z-10 h-full w-full bg-gradient-to-b from-black/10 from-0% to-black/40 to-100%"></div>
           <Container className="flex-item h-screen justify-end gap-12 text-white lg:justify-center">
-            {/* <Container className="flex-item h-screen justify-center gap-20 py-40 text-white lg:justify-center"> */}
-            <div className="z-10 flex items-end">
+            <div className="z-10 flex justify-center">
               <p
-                className="flex flex-col border-r-2 px-4 text-right"
+                className="flex w-1/2 flex-col border-r-2 px-4 text-right"
                 data-aos="fade-right"
                 data-aos-duration="1000"
                 data-aos-delay="100"
@@ -69,7 +67,7 @@ export default function Home() {
                 </span>
               </p>
               <p
-                className={`${karlotte.className} px-4 text-2xl uppercase`}
+                className={`${karlotte.className} w-1/2 px-4 text-2xl uppercase`}
                 data-aos="fade-left"
                 data-aos-duration="1000"
                 data-aos-delay="100"
@@ -84,7 +82,7 @@ export default function Home() {
                 className=""
                 data-aos="fade-right"
                 data-aos-duration="2000"
-                data-aos-offset="300"
+                data-aos-offset="100"
                 data-aos-delay="100"
               >
                 Konstantin
@@ -93,7 +91,7 @@ export default function Home() {
                 className=""
                 data-aos="fade-down"
                 data-aos-duration="2000"
-                data-aos-offset="300"
+                data-aos-offset="100"
                 data-aos-delay="100"
               >
                 &
@@ -102,6 +100,7 @@ export default function Home() {
                 className=""
                 data-aos="fade-left"
                 data-aos-duration="2000"
+                data-aos-offset="10"
                 data-aos-delay="100"
               >
                 Valentina

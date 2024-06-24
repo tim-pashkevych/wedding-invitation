@@ -27,7 +27,7 @@ export default function Home() {
       <Section className="h-screen w-full">
         <ParallaxBanner
           style={{ aspectRatio: '2 / 1' }}
-          className="flex h-screen flex-col items-center pb-12"
+          className="flex h-screen flex-col items-center"
         >
           <ParallaxBannerLayer speed={-20}>
             <Image
@@ -42,7 +42,7 @@ export default function Home() {
           </ParallaxBannerLayer>
 
           <div className="absolute z-10 h-full w-full bg-gradient-to-b from-black/10 from-0% to-black/40 to-100%"></div>
-          <Container className="flex-item h-screen justify-end gap-12 text-white lg:justify-center">
+          <Container className="flex-item h-screen justify-end gap-12 pb-24 text-white lg:justify-center">
             <div className="z-10 flex justify-center">
               <p
                 className="flex w-1/2 flex-col border-r-2 px-4 text-right"

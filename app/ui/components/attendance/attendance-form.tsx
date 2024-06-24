@@ -7,7 +7,6 @@ import { attendanceSchema } from '../../schemas/attendanceSchema';
 export const AttendanceForm = () => {
   interface AttendanceData {
     name: string;
-    email: string;
     adults: number;
     children: number;
     message: string;
@@ -38,16 +37,9 @@ export const AttendanceForm = () => {
           placeholder="Name"
           className="w-full border-b-2 bg-transparent text-xl"
         />
-        {errors.name?.message && <p>{errors.name?.message}</p>}
-      </div>
-      <div className="mb-10 w-full">
-        <input
-          type="text"
-          {...register('email')}
-          placeholder="Your email"
-          className="w-full border-b-2 bg-transparent text-xl "
-        />
-        {errors.email?.message && <p>{errors.email?.message}</p>}
+        {errors.name?.message && (
+          <p className="text-red-600">{errors.name?.message}</p>
+        )}
       </div>
       <div className="mb-10 w-full">
         <select
@@ -63,14 +55,16 @@ export const AttendanceForm = () => {
           <option value={6}>6</option>
           <option value={7}>7</option>
         </select>
-        {errors.adults?.message && <p>{errors.adults?.message}</p>}
+        {errors.adults?.message && (
+          <p className="text-red-600">{errors.adults?.message}</p>
+        )}
       </div>
       <div className="mb-10 w-full">
         <select
           {...register('children')}
           className="w-full border-b-2 bg-transparent text-xl "
         >
-          <option value={0}>Children (2 - 11 years)</option>
+          <option value={-1}>Children (2 - 11 years)</option>
           <option value={0}>0</option>
           <option value={1}>1</option>
           <option value={2}>2</option>
@@ -80,15 +74,20 @@ export const AttendanceForm = () => {
           <option value={6}>6</option>
           <option value={7}>7</option>
         </select>
-        {errors.children?.message && <p>{errors.children?.message}</p>}
+        {errors.children?.message && (
+          <p className="text-red-600">{errors.children?.message}</p>
+        )}
       </div>
       <div className="mb-10 w-full">
         <TextareaAutosize
           {...register('message')}
+          minRows={2}
           placeholder="Message"
           className="w-full border-b-2 bg-transparent text-xl "
         ></TextareaAutosize>
-        {errors.message?.message && <p>{errors.message?.message}</p>}
+        {errors.message?.message && (
+          <p className="text-red-600">{errors.message?.message}</p>
+        )}
       </div>
       <button
         type="submit"

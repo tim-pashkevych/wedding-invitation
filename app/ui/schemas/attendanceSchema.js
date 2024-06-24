@@ -1,15 +1,17 @@
 import * as Yup from 'yup';
 
 export const attendanceSchema = Yup.object({
-  name: Yup.string().min(1).required('Name field is required'),
-  email: Yup.string()
-    .required('Email is required')
-    .email('Enter a valid email')
-    .max(30, 'Max length must be less than 30 chars'),
+  name: Yup.string().required('Please, tell us who you are'),
   adults: Yup.number()
-    .required('Tell us how many addults attend')
-    .positive('Tell us how many addults attend')
+    .required('How many adults (12+ years) attend')
+    .positive('How many adults (12+ years) attend')
     .integer(),
-  children: Yup.number().integer().default(0),
+  children: Yup.number()
+    .required('How many kids (2-11 years) going with you')
+    .integer()
+    .oneOf(
+      [0, 1, 2, 3, 4, 5, 6, 7],
+      'How many kids (2-11 years) going with you',
+    ),
   message: Yup.string().default(''),
 });

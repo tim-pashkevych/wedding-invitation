@@ -48,28 +48,28 @@ export const BacktickTimer = () => {
   return (
     <div className={clsx([karlotte.className, 'flex gap-4 pt-5'])}>
       <div className="text-center">
-        <div className="flex h-20 w-16 items-center justify-center rounded bg-gradient-to-b from-lime-950 from-30% via-lime-800 via-50% to-lime-950 to-80% align-middle text-4xl font-bold text-white">
+        <div className="flex h-20 w-16 items-center justify-center rounded bg-gradient-to-b from-black from-30% via-gray-500 via-50% to-black to-80% align-middle text-4xl font-bold text-white">
           {timer.days ? timer.days.toString().padStart(2, '0') : '00'}
         </div>
         <div className={montserrat.className}>days</div>
       </div>
 
       <div className="text-center">
-        <div className="flex h-20 w-16 items-center justify-center rounded bg-gradient-to-b from-lime-950 from-30% via-lime-800 via-50% to-lime-950 to-80% align-middle text-4xl font-bold text-white">
+        <div className="flex h-20 w-16 items-center justify-center rounded bg-gradient-to-b from-black from-30% via-gray-500 via-50% to-black to-80% align-middle text-4xl font-bold text-white">
           {timer.hours ? timer.hours.toString().padStart(2, '0') : '00'}
         </div>
         <div className={montserrat.className}>hours</div>
       </div>
 
       <div className="text-center">
-        <div className="flex h-20 w-16 items-center justify-center rounded bg-gradient-to-b from-lime-950 from-30% via-lime-800 via-50% to-lime-950 to-80% align-middle text-4xl font-bold text-white">
+        <div className="flex h-20 w-16 items-center justify-center rounded bg-gradient-to-b from-black from-30% via-gray-500 via-50% to-black to-80% align-middle text-4xl font-bold text-white">
           {timer.minutes ? timer.minutes.toString().padStart(2, '0') : '00'}
         </div>
         <div className={montserrat.className}>minutes</div>
       </div>
 
       <div className="text-center">
-        <div className="flex h-20 w-16 items-center justify-center rounded bg-gradient-to-b from-lime-950 from-30% via-lime-800 via-50% to-lime-950 to-80% align-middle text-4xl font-bold text-white">
+        <div className="flex h-20 w-16 items-center justify-center rounded bg-gradient-to-b from-black from-30% via-gray-500 via-50% to-black to-80% align-middle text-4xl font-bold text-white">
           {timer.seconds ? timer.seconds.toString().padStart(2, '0') : '00'}
         </div>
         <div className={montserrat.className}>seconds</div>

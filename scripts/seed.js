@@ -9,7 +9,6 @@ async function seedAttendanceFormSubmissions(client) {
         name VARCHAR(255) NOT NULL,
         adults INT NULL DEFAULT NULL,
         kids INT NULL DEFAULT NULL,
-        message TEXT DEFAULT NULL,
         date TIMESTAMP NOT NULL DEFAULT now()
       );
     `;

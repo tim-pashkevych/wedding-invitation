@@ -13,5 +13,4 @@ export const attendanceSchema = Yup.object({
       [0, 1, 2, 3, 4, 5, 6, 7],
       'How many kids (2-11 years) going with you',
     ),
-  message: Yup.string().default(''),
 });

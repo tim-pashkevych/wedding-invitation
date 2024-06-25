@@ -1,6 +1,5 @@
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import TextareaAutosize from 'react-textarea-autosize';
 import { PaperAirplaneIcon } from '@heroicons/react/24/solid';
 import { useState } from 'react';
 
@@ -88,17 +87,6 @@ export const AttendanceForm = () => {
         </select>
         {errors.kids?.message && (
           <p className="text-red-600">{errors.kids?.message}</p>
-        )}
-      </div>
-      <div className="mb-10 w-full">
-        <TextareaAutosize
-          {...register('message')}
-          minRows={2}
-          placeholder="Message"
-          className="w-full border-b-2 bg-transparent text-xl "
-        ></TextareaAutosize>
-        {errors.message?.message && (
-          <p className="text-red-600">{errors.message?.message}</p>
         )}
       </div>
       <button

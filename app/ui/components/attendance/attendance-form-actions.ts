@@ -11,7 +11,7 @@ export async function save(data: IAttendanceSubmission) {
   });
 
   const { rows } =
-    await sql`INSERT INTO attendance_form_submissions (name, adults, kids, message, date) VALUES (${data.name}, ${data.adults}, ${data.kids}, ${data.message}, ${date}) ON CONFLICT (id) DO NOTHING;`;
+    await sql`INSERT INTO attendance_form_submissions (name, adults, kids, date) VALUES (${data.name}, ${data.adults}, ${data.kids}, ${date}) ON CONFLICT (id) DO NOTHING;`;
 
   return rows;
 }

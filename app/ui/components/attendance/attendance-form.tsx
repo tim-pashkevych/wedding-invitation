@@ -91,7 +91,7 @@ export const AttendanceForm = () => {
       </div>
       <button
         type="submit"
-        className="flex h-10 w-full items-center justify-center gap-2 rounded-xl bg-black/[.2] p-8 text-xl font-normal"
+        className="flex h-10 w-full items-center justify-center gap-2 rounded-xl bg-black/[.9] p-8 text-xl font-normal text-white"
       >
         <PaperAirplaneIcon className="size-6"></PaperAirplaneIcon>
         Send

@@ -1,8 +1,12 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ParallaxBanner, ParallaxBannerLayer } from 'react-scroll-parallax';
+import clsx from 'clsx';
+import { MapPinIcon, PhoneIcon } from '@heroicons/react/24/solid';
+import { isIOS } from 'react-device-detect';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
@@ -13,13 +17,22 @@ import {
   Section,
   Container,
 } from '@/app/ui/components';
-import { useEffect } from 'react';
-import clsx from 'clsx';
-import { MapPinIcon, PhoneIcon } from '@heroicons/react/24/solid';
 
 export default function Home() {
+  const [mapsLink, setMapsLink] = useState(
+    'https://maps.app.goo.gl/7da9W9QKmnx563p26?g_st=it',
+  );
+  const [mapsLinkTitle, setMapsLinkTitle] = useState('Open Google Maps');
+
   useEffect(() => {
     AOS.init();
+
+    if (isIOS) {
+      setMapsLink(
+        'https://maps.apple.com/?address=10220%20SE%20Causey%20Ave,%20Happy%20Valley,%20OR%20%2097086,%20United%20States&ll=45.440179,-122.557736&q=10220%20SE%20Causey%20Ave&t=m',
+      );
+      setMapsLinkTitle('Open Maps');
+    }
   }, []);
 
   return (
@@ -109,31 +122,10 @@ export default function Home() {
           </Container>
         </ParallaxBanner>
       </Section>
-      <Section className="text-center">
-        <Container>
-          <div data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
-            <p className="text-xl">Дорогие друзья.</p>
-            <p className="text-xl">
-              В нашей жизни скоро состоится важное событие - Наша Свадьба
-            </p>
-            <p className="pb-6 text-xl">
-              Позвольте пригласить Вас разделить радость этого дня
-            </p>
-          </div>
-          <p
-            data-aos="zoom-in"
-            data-aos-duration="1000"
-            data-aos-delay="100"
-            className={`${karlotte.className} text-5xl  uppercase md:text-6xl`}
-          >
-            08.12.2024
-          </p>
-        </Container>
-      </Section>
-      <Section>
-        <Container>
+      <Section className="pt-10">
+        <Container className="pb-0 pt-10">
           <h2
-            className="relative mb-6 flex w-auto flex-col text-center text-5xl uppercase md:text-6xl"
+            className="relative mb-10 flex w-auto flex-col text-center text-5xl uppercase md:text-6xl"
             data-aos="fade-down"
             data-aos-duration="1000"
             data-aos-delay="100"
@@ -151,6 +143,36 @@ export default function Home() {
           <div data-aos="fade-up" data-aos-duration="1000" data-aos-delay="50">
             <BacktickTimer />
           </div>
+        </Container>
+      </Section>
+      <Section className="pb-10 text-center">
+        <Container className="pb-10 pt-5">
+          <p
+            className="mb-5 text-xl"
+            data-aos="fade-up"
+            data-aos-duration="1000"
+            data-aos-delay="200"
+          >
+            On this special day, a very important event will take place for the
+            both of us.
+          </p>
+          <p
+            className="pb-6 text-xl"
+            data-aos="fade-up"
+            data-aos-duration="1000"
+            data-aos-delay="600"
+          >
+            We would be honored to have you as guests and witnesses to the
+            beginning of this new chapter in our lives.
+          </p>
+          <p
+            data-aos="zoom-in"
+            data-aos-duration="1000"
+            data-aos-delay="100"
+            className={`${karlotte.className} text-5xl  uppercase md:text-6xl`}
+          >
+            08.12.2024
+          </p>
         </Container>
       </Section>
       <Section className="w-full bg-lime-950 pb-10 pt-10 text-white">
@@ -185,14 +207,14 @@ export default function Home() {
 
           <Link
             className="flex items-center gap-2 rounded-xl bg-white/[.2] p-5 text-xl"
-            href="https://maps.app.goo.gl/7da9W9QKmnx563p26?g_st=it"
+            href={mapsLink}
             target="_blank"
             data-aos="flip-up"
             data-aos-duration="1000"
             data-aos-delay="100"
           >
             <MapPinIcon className="size-6" />
-            Open Google Map
+            {mapsLinkTitle}
           </Link>
         </Container>
       </Section>
@@ -219,8 +241,8 @@ export default function Home() {
             <h2
               className="relative mb-16 flex w-auto flex-col text-center text-5xl uppercase md:text-6xl"
               data-aos="fade-down"
-              data-aos-duration="3000"
-              data-aos-delay="200"
+              data-aos-duration="1000"
+              data-aos-delay="100"
             >
               <span className={karlotte.className}>Timing</span>
               <span
@@ -242,7 +264,7 @@ export default function Home() {
               <p className={`${karlotte.className} text-5xl md:text-6xl`}>
                 15:30
               </p>
-              <p>Cбор гостей</p>
+              <p className="text-lg uppercase">Welcome</p>
               <div className="my-4 h-20 w-px border border-white"></div>
             </div>
 
@@ -251,11 +273,12 @@ export default function Home() {
               data-aos="flip-up"
               data-aos-duration="2000"
               data-aos-delay="100"
+              data-aos-offset="200"
             >
               <p className={`${karlotte.className} text-5xl md:text-6xl`}>
                 16:00
               </p>
-              <p>Торжественная церемония</p>
+              <p className="text-lg uppercase">Wedding ceremony</p>
               <div className="my-4 h-20 w-px border border-white"></div>
             </div>
 
@@ -264,11 +287,12 @@ export default function Home() {
               data-aos="flip-up"
               data-aos-duration="2000"
               data-aos-delay="100"
+              data-aos-offset="200"
             >
               <p className={`${karlotte.className} text-5xl md:text-6xl`}>
                 17:00
               </p>
-              <p>Банкет</p>
+              <p className="text-lg uppercase">Dinner</p>
               <div className="my-4 h-20 w-px border border-white"></div>
             </div>
 
@@ -277,11 +301,12 @@ export default function Home() {
               data-aos="flip-up"
               data-aos-duration="2000"
               data-aos-delay="100"
+              data-aos-offset="300"
             >
               <p className={`${karlotte.className} text-5xl md:text-6xl`}>
                 21:00
               </p>
-              <p>Завершение торжества</p>
+              <p className="text-lg uppercase">Farewell</p>
             </div>
           </Container>
         </ParallaxBanner>
@@ -293,6 +318,7 @@ export default function Home() {
             data-aos="fade-down"
             data-aos-duration="1000"
             data-aos-delay="100"
+            data-aos-offset="200"
           >
             <span className={karlotte.className}>Will You Attend?</span>
             <span
@@ -304,12 +330,24 @@ export default function Home() {
               invited
             </span>
           </h2>
-          <AttendanceForm />
+          <div
+            data-aos="fade-up"
+            data-aos-duration="1000"
+            data-aos-delay="100"
+            data-aos-offset="200"
+          >
+            <AttendanceForm />
+          </div>
         </Container>
       </Section>
       <Section className="w-ful bg-lime-950 pb-10 pt-10 text-white">
         <Container className="text-center text-xl not-italic">
-          <h2 className="relative mb-16 flex w-auto flex-col text-center text-5xl uppercase md:text-6xl">
+          <h2
+            className="relative mb-16 flex w-auto flex-col text-center text-5xl uppercase md:text-6xl"
+            data-aos="fade-down"
+            data-aos-duration="1000"
+            data-aos-delay="100"
+          >
             <span className={karlotte.className}>Contacts</span>
             <span
               className={clsx([
@@ -321,16 +359,29 @@ export default function Home() {
             </span>
           </h2>
 
-          <p className="mb-4">
-            По всем возникшим вопросам просьба обращаться по телефону
-          </p>
-
-          <a
-            href="tel:5032478727"
-            className="flex items-end gap-2 rounded-xl bg-white/[.2] p-5"
+          <div
+            data-aos="fade-up"
+            data-aos-duration="1000"
+            data-aos-delay="100"
+            data-aos-offset="0"
           >
-            <PhoneIcon className="size-6"></PhoneIcon>(503)-427-8727
-          </a>
+            <p className="mb-4">For any questions, please call</p>
+
+            <a
+              href="tel:3609490636"
+              className="mb-5 flex w-full items-center gap-1 rounded-xl bg-white/[.2] p-5 text-lg"
+            >
+              <PhoneIcon className="size-6"></PhoneIcon>(360) 949-0636
+              <span className="text-sm">(Konstantin)</span>
+            </a>
+            <a
+              href="tel:5039847066"
+              className="mb-5 flex w-full items-center gap-1 rounded-xl bg-white/[.2] p-5 text-lg"
+            >
+              <PhoneIcon className="size-6"></PhoneIcon>(503) 984-7066{' '}
+              <span className="text-sm">(Valentina)</span>
+            </a>
+          </div>
         </Container>
       </Section>
     </main>

@@ -4,8 +4,8 @@ import { montserrat } from '@/app/ui/fonts';
 import '@/app/ui/globals.css';
 
 export const metadata: Metadata = {
-  title: 'Wedding Invintation',
-  description: 'Wedding invintation app for Konstantin & Valentina',
+  title: 'Konstantin & Valentina Sokolov',
+  description: 'Wedding invitation app for Konstantin & Valentina',
 };
 
 export default function RootLayout({

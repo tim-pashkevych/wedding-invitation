@@ -1,11 +1,11 @@
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { PaperAirplaneIcon } from '@heroicons/react/24/solid';
-import { useState } from 'react';
 
 import { attendanceSchema } from '../../schemas/attendanceSchema';
 import { IAttendanceSubmission } from '@/app/types';
-import { save } from './attendance-form-actions';
+import { save, sendEmail } from './attendance-form-actions';
 
 export const AttendanceForm = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -20,6 +20,7 @@ export const AttendanceForm = () => {
 
   const onSubmit = async (data: IAttendanceSubmission) => {
     await save(data);
+    await sendEmail(data);
     setIsSubmitted(true);
   };
 

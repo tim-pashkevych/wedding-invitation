@@ -10,6 +10,7 @@ import { isIOS } from 'react-device-detect';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
+import useWindowDimensions from '@/app/ui/hooks/useWindowDimension';
 import { karlotte, betmo } from '@/app/ui/fonts';
 import {
   AttendanceForm,
@@ -23,6 +24,15 @@ export default function Home() {
     'https://maps.app.goo.gl/7da9W9QKmnx563p26?g_st=it',
   );
   const [mapsLinkTitle, setMapsLinkTitle] = useState('Open Google Maps');
+  const { width, height } = useWindowDimensions();
+  const screenWidth = width ? width : 0;
+  const screenHeight = height ? height : 0;
+
+  const smWidth = screenWidth < 640;
+  const mdWidth = screenWidth > 640;
+  const lgWidth = screenWidth > 768;
+  const xlWidth = screenWidth > 1024;
+  const xxlWidth = screenWidth > 1280;
 
   useEffect(() => {
     AOS.init();
@@ -43,51 +53,90 @@ export default function Home() {
           className="flex h-screen flex-col items-center"
         >
           <ParallaxBannerLayer speed={-20}>
-            <Image
-              src="/hero.jpg"
-              alt="Konstantin and Valentina"
-              fill
-              style={{
-                objectFit: 'contain',
-              }}
-              quality={100}
-            />
+            {smWidth && (
+              <Image
+                src="/hero.jpg"
+                alt="Konstantin and Valentina"
+                fill
+                style={{
+                  objectFit: 'contain',
+                }}
+                quality={100}
+              />
+            )}
+            {mdWidth && screenHeight < 376 && (
+              <Image
+                src="/hero.jpg"
+                alt="Konstantin and Valentina"
+                fill
+                style={{
+                  objectFit: 'none',
+                  objectPosition: 'top',
+                }}
+                quality={100}
+              />
+            )}
+            {mdWidth && screenHeight > 376 && (
+              <Image
+                src="/hero-org.jpg"
+                alt="Konstantin and Valentina"
+                fill
+                style={{
+                  objectFit: 'none',
+                  objectPosition: 'top',
+                }}
+                quality={100}
+              />
+            )}
           </ParallaxBannerLayer>
 
           <div className="absolute z-10 h-full w-full bg-gradient-to-b from-black/10 from-0% to-black/40 to-100%"></div>
-          <Container className="flex-item h-screen justify-end gap-12 pb-24 text-white lg:justify-center">
-            <div className="z-10 flex justify-center">
-              <p
-                className="flex w-1/2 flex-col border-r-2 px-4 text-right"
-                data-aos="fade-right"
-                data-aos-duration="1000"
-                data-aos-delay="100"
-              >
-                <span
-                  className={`${karlotte.className} relative -top-12 text-5xl uppercase md:text-6xl`}
+          <Container
+            className={clsx({
+              'flex-item h-screen gap-12 text-white': true,
+              'justify-end': screenHeight < 1200,
+              'justify-center': screenHeight > 1200,
+              'pb-24': screenHeight < 739,
+              'pb-36': screenHeight > 739 && screenHeight < 800,
+              'pb-48': screenHeight > 800 && screenHeight < 850,
+              'pb-56': screenHeight > 850 && screenHeight < 1200,
+              'pb-64': screenHeight > 1200,
+            })}
+          >
+            {screenHeight > 430 && (
+              <div className="z-10 flex justify-center">
+                <p
+                  className="flex w-1/2 flex-col border-r-2 px-4 text-right"
+                  data-aos="fade-right"
+                  data-aos-duration="1000"
+                  data-aos-delay="100"
                 >
-                  08
-                </span>
-                <span
-                  className={`${karlotte.className} relative -top-12 text-5xl uppercase md:text-6xl`}
+                  <span
+                    className={`${karlotte.className} relative -top-12 text-5xl uppercase md:text-6xl`}
+                  >
+                    08
+                  </span>
+                  <span
+                    className={`${karlotte.className} relative -top-12 text-5xl uppercase md:text-6xl`}
+                  >
+                    12
+                  </span>
+                  <span
+                    className={`${karlotte.className} relative -top-12 text-5xl uppercase md:text-6xl`}
+                  >
+                    24
+                  </span>
+                </p>
+                <p
+                  className={`${karlotte.className} w-1/2 px-4 text-2xl uppercase`}
+                  data-aos="fade-left"
+                  data-aos-duration="1000"
+                  data-aos-delay="100"
                 >
-                  12
-                </span>
-                <span
-                  className={`${karlotte.className} relative -top-12 text-5xl uppercase md:text-6xl`}
-                >
-                  24
-                </span>
-              </p>
-              <p
-                className={`${karlotte.className} w-1/2 px-4 text-2xl uppercase`}
-                data-aos="fade-left"
-                data-aos-duration="1000"
-                data-aos-delay="100"
-              >
-                Wedding day
-              </p>
-            </div>
+                  Wedding day
+                </p>
+              </div>
+            )}
             <h1
               className={`${karlotte.className} z-10 flex flex-col gap-3 text-center text-5xl uppercase md:gap-6 md:text-6xl lg:flex-row`}
             >

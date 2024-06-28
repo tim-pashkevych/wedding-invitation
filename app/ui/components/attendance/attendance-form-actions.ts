@@ -51,7 +51,7 @@ export async function sendEmail(data: IAttendanceSubmission) {
     text: `You have received a new confirmation of the wedding addending.\n\nName: ${data.name}\nAdults: ${data.adults}\nKids: ${data.kids}\n\n Sent by Sokolow.Wedding`,
     html: `${submissionHtml} ${allSubmissionsHtml} ${totalStatistics} Sent by <a href="https://sokolov.wedding">Sokolow.Wedding</a>`,
   };
-  const resp = await sgMail
+  await sgMail
     .send(msg)
     .then(() => {
       console.log('Email sent');
@@ -59,7 +59,4 @@ export async function sendEmail(data: IAttendanceSubmission) {
     .catch((error) => {
       console.error(error);
     });
-
-  return process.env.SENDGRID_API_KEY;
-  // return resp;
 }

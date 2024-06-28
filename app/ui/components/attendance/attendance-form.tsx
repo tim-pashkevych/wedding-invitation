@@ -20,8 +20,7 @@ export const AttendanceForm = () => {
 
   const onSubmit = async (data: IAttendanceSubmission) => {
     await save(data);
-    const response = await sendEmail(data);
-    console.log(response);
+    await sendEmail(data);
 
     setIsSubmitted(true);
   };

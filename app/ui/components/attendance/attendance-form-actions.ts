@@ -22,15 +22,14 @@ export async function sendEmail(data: IAttendanceSubmission) {
 
   sgMail.setApiKey(process.env.SENDGRID_API_KEY ?? '');
 
-  const totalGuests = rows.length;
   const totalAdults = rows.reduce(
     (total, row) => total + Number(row.adults),
     0,
   );
   const totalKids = rows.reduce((total, row) => total + Number(row.kids), 0);
 
-  const totalStatistics = `TOTAL:<br/><br/><strong>Guests:</strong> ${totalGuests}<br/><strong>Adults:</strong> ${totalAdults}<br/><strong>Kids:</strong> ${totalKids}<br/><br/>`;
-  const submissionHtml = `You have received a new confirmation of the wedding addending.<br/><br/><strong>Name:</strong> ${data.name}<br/><strong>Adults:</strong> ${data.adults}<br/><strong>Kids:</strong> ${data.kids}<br/><br/>`;
+  const totalStatistics = `Total:<br/><strong>Adults:</strong> ${totalAdults}<br/><strong>Kids:</strong> ${totalKids}<br/><br/>`;
+  const submissionHtml = `You have received a new confirmation of the wedding addending.<br/><br/>This submission:<br/><strong>Name:</strong> ${data.name}<br/><strong>Adults:</strong> ${data.adults}<br/><strong>Kids:</strong> ${data.kids}<br/><br/>`;
   const allSubmissionsHtml = `All submissions:<br/>
     <table border="1" cellpadding="10">
       <tr>

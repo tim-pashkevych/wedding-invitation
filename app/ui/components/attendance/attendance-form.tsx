@@ -19,10 +19,12 @@ export const AttendanceForm = () => {
   });
 
   const onSubmit = async (data: IAttendanceSubmission) => {
-    await save(data);
-    await sendEmail(data);
+    if (!isSubmitted) {
+      setIsSubmitted(true);
 
-    setIsSubmitted(true);
+      await save(data);
+      await sendEmail(data);
+    }
   };
 
   if (isSubmitted)
@@ -94,9 +96,9 @@ export const AttendanceForm = () => {
       <button
         type="submit"
         className="flex h-10 w-full items-center justify-center gap-2 rounded-xl bg-black/[.9] p-8 text-xl font-normal text-white"
+        disabled={isSubmitted}
       >
-        <PaperAirplaneIcon className="size-6"></PaperAirplaneIcon>
-        Send
+        <PaperAirplaneIcon className="size-6"></PaperAirplaneIcon> Send
       </button>
     </form>
   );

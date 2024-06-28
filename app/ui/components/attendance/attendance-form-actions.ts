@@ -70,32 +70,4 @@ export async function sendEmail(data: IAttendanceSubmission) {
     .catch((error) => {
       console.error(error);
     });
-
-  // const sendToEmails = process.env.SENDGRID_SEND_TO
-  //   ? process.env.SENDGRID_SEND_TO.split(',')
-  //   : ['tim.pashkevych@gmail.com'];
-
-  // await Promise.all(
-  //   sendToEmails.map(async (sendTo) => {
-  //     const msg = {
-  //       to: sendTo.trim(),
-  //       from: {
-  //         email: process.env.SENDGRID_SEND_FROM ?? 'lumenstudiollc@gmail.com',
-  //         name: 'Sokolov.Wedding Admin',
-  //       },
-  //       subject: 'New confirmation of the wedding attending',
-  //       text: `You have received a new confirmation of the wedding addending.\n\nName: ${data.name}\nAdults: ${data.adults}\nKids: ${data.kids}\n\n Sent by Sokolow.Wedding`,
-  //       html: `${submissionHtml} ${totalStatistics} ${allSubmissionsHtml} Sent by <a href="https://sokolov.wedding">Sokolow.Wedding</a>`,
-  //     };
-
-  //     await sgMail
-  //       .send(msg)
-  //       .then(() => {
-  //         console.log('Email sent');
-  //       })
-  //       .catch((error) => {
-  //         console.error(error);
-  //       });
-  //   }),
-  // );
 }

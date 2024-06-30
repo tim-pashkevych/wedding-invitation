@@ -15,7 +15,7 @@ interface Timer {
 }
 export const BacktickTimer = () => {
   const weddingDate = useRef(
-    toZonedTime(new Date(2024, 7, 12, 17, 0), 'America/Los_Angeles'),
+    toZonedTime(new Date(2024, 7, 12, 15, 30), 'America/Los_Angeles'),
   );
   const [timer, setTimer] = useState<Timer>({
     days: 0,

@@ -1,3 +1,4 @@
+import { Analytics } from '@vercel/analytics/react';
 import { Providers } from './providers';
 import type { Metadata } from 'next';
 import { montserrat } from '@/app/ui/fonts';
@@ -17,6 +18,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={montserrat.className}>
         <Providers>{children}</Providers>
+        <Analytics />
       </body>
     </html>
   );

@@ -34,6 +34,17 @@ export const BacktickTimer = () => {
 
       const days = differenceInDays(weddingDate.current, now);
 
+      if (days < 0) {
+        setTimer({
+          days: 0,
+          hours: 0,
+          minutes: 0,
+          seconds: 0,
+        });
+        clearInterval(timerId);
+        return;
+      }
+
       setTimer({
         days,
         hours: interval.hours,
